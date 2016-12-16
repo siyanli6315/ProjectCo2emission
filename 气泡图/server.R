@@ -1,0 +1,60 @@
+#1215shinyapp气泡图
+##server部分
+options(warn=-1)
+library(shiny)
+library(ggplot2)
+library(showtext)
+library(scales)
+library("latex2exp")
+library(plyr)
+library(grid)
+showtext.auto(enable=T)
+load("pc1.rda")
+load("pg1.rda")
+load("tot1.rda")
+
+pfun1=function(pc,pg,tot,year){
+  options(warn=-1)
+  yr=paste("X",year,sep="")
+  tmp1=data.frame(ID=pc$Country.code,x=pc[,yr])
+  tmp2=data.frame(ID=pg$Country.code,y=pg[,yr])
+  tmp3=data.frame(ID=tot$Country.code,size=tot[,yr])
+  tmp=join(tmp1,tmp2,by="ID")
+  tmp=join(tmp,tmp3,by="ID")
+  ph=ggplot(data=tmp)+
+    geom_point(aes(x=x,y=y,size=size),color="red",alpha=0.6)+
+    labs(x="人均二氧化碳排放量",y="每GDP二氧化碳排放量",size="排放总量")+
+    geom_hline(aes(yintercept=median(y,na.rm=T)),
+               linetype=2,color="darkred",size=1)+
+    geom_vline(aes(xintercept=median(x,na.rm=T)),
+               linetype=2,color="darkred",size=1)+
+    annotate("text",
+             x=30,
+             y=median(tmp$y,na.rm=T),
+             label=paste("中位数",round(median(tmp$y,na.rm=T),1)),
+             hjust=1,vjust=1.5,size=5)+
+    annotate("text",
+             y=1500,
+             x=median(tmp$x,na.rm=T),
+             label=paste("中位数",round(median(tmp$x,na.rm=T),1)),
+             hjust=0,vjust=1.5,size=5)+
+    geom_text(data=tmp[order(tmp$size,decreasing=T)[1:5],],
+              aes(x=x,y=y,label=ID),size=4,vjust=-1)+
+    scale_size_continuous(range=c(1,10),
+                          breaks=c(2e6,4e6,6e6),
+                          labels=c(TeX("$ \\2.0 \\times 10^{6}$"),
+                                   TeX("$ \\4.0 \\times 10^{6}$"),
+                                   TeX("$ \\6.0 \\times 10^{6}$")))+
+    scale_x_continuous(limits=c(0,30))+
+    scale_y_continuous(limits=c(0,1500))+
+    theme_classic()+
+    theme(axis.title=element_text(size=18),
+          axis.text=element_text(size=10),
+          legend.text=element_text(size=10),
+          legend.title=element_text(size=18))
+  print(ph)
+}
+
+shinyServer(function(input,output){
+  output$plot=renderPlot(pfun1(pc1,pg1,tot1,input$year))
+})
