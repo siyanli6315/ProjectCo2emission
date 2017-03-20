@@ -24,7 +24,7 @@ runApp("你的路径/co2bar")
 
 左图展示了从 1990 年到 2007 年间，世界二氧化碳排放量，世界人均二氧化碳排放量，世界每 GDP 二氧化碳排放量等指标的基本情况。右图展示了从 1990 年到 2007 年，上述三个指标的年变化率。
 
-shinyapp地址：https://siyanli6315.shinyapps.io/co2emission-line/
+shinyapp地址：https://siyanli6315.shinyapps.io/co2emission-line/(由于服务器限制，现暂停。)
 
 ### 分区域分析
 
@@ -32,7 +32,7 @@ shinyapp地址：https://siyanli6315.shinyapps.io/co2emission-line/
 
 左图展示了从 1990 年到 2008 年间，全球 7 个区域的二氧化碳排放总量变化情况。中图展 示了从 1990 年到 2008 年间，全球 7 个区域的每 GDP 二氧化碳排放量变化情况。右图展示了从 1990 年到 2008 年间，全球 7 个区域的人均二氧化碳排放量变化情况。
 
-shinyapp地址：https://siyanli6315.shinyapps.io/co2bar/
+shinyapp地址：https://siyanli6315.shinyapps.io/co2bar/(由于服务器限制，现暂停。)
 
 ### 分国家分析
 
@@ -40,7 +40,7 @@ shinyapp地址：https://siyanli6315.shinyapps.io/co2bar/
 
 上图展示了 2008 年世界各国二氧化碳排放的基本情况。在上图中横轴表示人均二氧化碳排 放量，纵轴表示每 GDP 二氧化碳排放量，气泡表示国家，气泡大小表示二氧化碳排放总量，气泡 颜色表示区域(红色表示拉美、撒哈拉以南非洲和南亚。蓝色表示东亚太平洋地区、北美、欧洲和 中亚)。虚线表示人均二氧化碳排放量的中位数和每 GDP 二氧化碳排放的中位数。二氧化碳排放 量总量最高的五个国家在图中被标注出来。
 
-shinyapp地址：https://siyanli6315.shinyapps.io/co2bubble/
+shinyapp地址：https://siyanli6315.shinyapps.io/co2bubble/(由于服务器限制，现暂停。)
 
 <img src="./图7.png" width = "420" height = "250" alt="图片名称" align=center />
 
@@ -49,4 +49,4 @@ shinyapp地址：https://siyanli6315.shinyapps.io/co2bubble/
 地图数据来源于rWBclimate包。rWBclimate包的github连接如下：https://github.com/ropensci/rWBclimate
 
 
-shinyapp地址：https://siyanli6315.shinyapps.io/co2map/
+shinyapp地址：https://siyanli6315.shinyapps.io/co2map/(由于服务器限制，现暂停。)
